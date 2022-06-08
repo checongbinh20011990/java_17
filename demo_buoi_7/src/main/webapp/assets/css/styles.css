@@ -1,0 +1,17 @@
+/* css cho tất cả cặp thẻ h1 */
+h1{
+	color: red;
+}
+
+/*  dấu chấm là gọi class bên html */
+.coffee{
+	color: blue
+}
+.btn{
+	background-color: gray;
+}
+
+/* dấu thằng đại diện cho id bên html */
+#btn-primary{
+	padding: 20px
+}
