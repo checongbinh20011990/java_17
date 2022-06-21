@@ -38,4 +38,10 @@ public class PhimService implements PhimServiceImp {
 		return listPhim;
 	}
 
+	@Override
+	public void insertPhim(Phim phim) {
+		// TODO Auto-generated method stub
+		phimRepository.save(phim);
+	}
+
 }
