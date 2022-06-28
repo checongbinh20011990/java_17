@@ -20,14 +20,14 @@ public class JwtProvider {
 	private long JWT_EXPIRED = 8 * 60 * 60 * 1000;
 	private Gson gson = new Gson();
 	
-	public String generateToken(User user) {
+	public String generateToken(String data) {
 		Date now = new Date();
 		Date expriedDate = new Date(now.getTime() + JWT_EXPIRED);
 		
-		String json = gson.toJson(user);
+//		String json = gson.toJson(user);
 		
 		return Jwts.builder()
-				.setSubject(json) //Dữ liệu muốn lưu kèm ở token
+				.setSubject(data) //Dữ liệu muốn lưu kèm ở token
 				.setIssuedAt(now) //Ngày tạo token
 				.setExpiration(expriedDate) //Thời gian hết hạn của token
 				.signWith(SignatureAlgorithm.HS256, SECRECT_KEY) //Thuật mã hoá và mã hoá dựa trên SECRECT_KEY

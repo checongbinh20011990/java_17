@@ -39,7 +39,8 @@ public class LoginController {
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		//Tạo token
-		String jwtToken = jwtProvider.generateToken((User)authentication.getPrincipal());
+//		String jwtToken = jwtProvider.generateToken((User)authentication.getPrincipal());
+		String jwtToken = jwtProvider.generateToken(loginRequest.getUsername());
 		
 		return new ResponseEntity<String>(jwtToken, HttpStatus.OK);
 	}
