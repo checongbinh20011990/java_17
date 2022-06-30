@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cybersoft.cineflix_api.services.FileSystemStorageServiceImp;
 
+/* 
+ * Add Spring Security vào trong project,
+ * và quy định link /file phải chứng thực mới được phép truy cập
+ * "username: filesystem, password: 123456"
+ * */
+
 @RestController
 @RequestMapping("/file")
 public class FileController {
