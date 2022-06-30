@@ -6,6 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,8 +31,11 @@ public class PhimController {
 	@Autowired
 	FileSystemStorageServiceImp fileSystemStorageServiceImp;
 	
+//	@Secured({"ROLE_USER","ROLE_CREATE"})
+	@PostAuthorize("hasRole('ROLE_UPDATE')")
 	@GetMapping("")
 	public ResponseEntity<?> getAllPhim(){
+		System.out.println("kiemtra get phim");
 		List<Map<String, ?>> listPhim = phimServiceImp.getAllPhim();
 		//Cach 1
 		//jackjson, gson String

@@ -18,7 +18,9 @@ import com.cybersoft.cineflix_api.helper.JwtAuthFilter;
 
 @Configuration
 @EnableGlobalMethodSecurity(
-		securedEnabled = true)
+		securedEnabled = true,
+		prePostEnabled = true
+		)
 @EnableWebSecurity()
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	

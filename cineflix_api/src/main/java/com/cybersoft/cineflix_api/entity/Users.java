@@ -1,10 +1,13 @@
 package com.cybersoft.cineflix_api.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name = "user")
 public class Users {
@@ -18,6 +21,7 @@ public class Users {
 	
 	@Column(name = "user_password")
 	private String password;
+	
 
 	public long getId() {
 		return id;
