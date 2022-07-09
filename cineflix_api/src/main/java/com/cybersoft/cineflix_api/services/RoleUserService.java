@@ -21,7 +21,11 @@ public class RoleUserService implements RoleUserServiceImp{
 		// TODO Auto-generated method stub
 		return repository.getRoleNameByUserName(username);
 	}
-	
-	
 
+	@Override
+	public List<RoleUser> getRoleByUserId(long userId) {
+		// TODO Auto-generated method stub
+		return repository.findByIdUserId(userId);
+	}
+	
 }

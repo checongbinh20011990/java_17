@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +23,16 @@ public class Users {
 	@Column(name = "user_password")
 	private String password;
 	
+	@OneToMany(mappedBy = "users", fetch = FetchType.EAGER )
+	private Set<RoleUser> roleUsers;
+	
+	public Set<RoleUser> getRoleUsers() {
+		return roleUsers;
+	}
+
+	public void setRoleUsers(Set<RoleUser> roleUsers) {
+		this.roleUsers = roleUsers;
+	}
 
 	public long getId() {
 		return id;

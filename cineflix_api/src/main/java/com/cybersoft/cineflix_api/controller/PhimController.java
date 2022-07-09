@@ -3,6 +3,8 @@ package com.cybersoft.cineflix_api.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,8 @@ import com.cybersoft.cineflix_api.services.PhimServiceImp;
 @RequestMapping("/phim")
 public class PhimController {
 	
+	Logger logger = LoggerFactory.getLogger(PhimController.class);
+	
 	@Autowired
 	PhimServiceImp phimServiceImp;
 	
@@ -35,6 +39,13 @@ public class PhimController {
 	@PostAuthorize("hasRole('ROLE_UPDATE')")
 	@GetMapping("")
 	public ResponseEntity<?> getAllPhim(){
+		logger.trace("Trace level log");
+		logger.debug("Debug level log");
+		logger.info("Info level log");
+		logger.warn("Warn level log");
+		logger.error("Error level log");
+		
+		int ketqua = 1/0;
 		System.out.println("kiemtra get phim");
 		List<Map<String, ?>> listPhim = phimServiceImp.getAllPhim();
 		//Cach 1

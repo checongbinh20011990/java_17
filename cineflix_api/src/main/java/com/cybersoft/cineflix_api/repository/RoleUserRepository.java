@@ -16,4 +16,5 @@ public interface RoleUserRepository extends JpaRepository<RoleUser, Long>{
 	@Query(value = "call GetAllRoleByUserName(:username)", nativeQuery = true)
 	List<Map<String, ?>> getRoleNameByUserName(@Param("username") String username);
 	
+	List<RoleUser> findByIdUserId(long userId);
 }

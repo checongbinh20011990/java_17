@@ -1,5 +1,7 @@
 package com.cybersoft.cineflix_api.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cybersoft.cineflix_api.helper.JwtProvider;
 import com.cybersoft.cineflix_api.payload.LoginRequest;
+import com.google.gson.Gson;
 
 @RestController
 @RequestMapping("/api/v1")
 public class LoginController {
+	
+	Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
 	AuthenticationManager authenticationManager;
@@ -27,8 +32,13 @@ public class LoginController {
 	@Autowired
 	JwtProvider jwtProvider;
 	
+	private Gson gson = new Gson();
+	
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest){
+		String json = gson.toJson(loginRequest);
+		logger.info("[IN-REQUEST] " + json);
+		
 		//Hàm dùng để kích hoạt đăng nhập bằng tay
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(

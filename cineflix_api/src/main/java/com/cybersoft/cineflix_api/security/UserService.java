@@ -38,10 +38,26 @@ public class UserService implements UserDetailsService {
 		
 		
 		Users users = userServiceImp.findByUsername(username);
-		List<Map<String, ?>> listRole = roleUserServiceImp.getRoleByUserId(username);
+		System.out.println("kiemtra user " + users.getRoleUsers().size());
+//		Cách 1:
+//		List<Map<String, ?>> listRole = roleUserServiceImp.getRoleByUserId(username);
+//		
+//		for (Map<String, ?> map : listRole) {
+//			SimpleGrantedAuthority roleAdmin = new SimpleGrantedAuthority(map.get("role_name").toString());
+//			roles.add(roleAdmin);
+//		}
 		
-		for (Map<String, ?> map : listRole) {
-			SimpleGrantedAuthority roleAdmin = new SimpleGrantedAuthority(map.get("role_name").toString());
+//		Cách 2:
+//		List<RoleUser> listRole = roleUserServiceImp.getRoleByUserId(users.getId());
+//		for (RoleUser roleUser : listRole) {
+//			System.out.println("kiemtra role : " + roleUser.getRoles().getRoleName());
+//			SimpleGrantedAuthority roleAdmin = new SimpleGrantedAuthority(roleUser.getRoles().getRoleName());
+//			roles.add(roleAdmin);
+//		}
+		
+//		Cách 3:
+		for (RoleUser roleUser : users.getRoleUsers()) {
+			SimpleGrantedAuthority roleAdmin = new SimpleGrantedAuthority(roleUser.getRoles().getRoleName());
 			roles.add(roleAdmin);
 		}
 		

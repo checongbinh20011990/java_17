@@ -13,44 +13,44 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 
 @Entity(name = "role_user")
-@IdClass(RoleUserId.class)
 public class RoleUser {
 	
-	@Id
-	private long role_id;
+	@EmbeddedId
+	private RoleUserId id;
 	
-	@Id
-	private long user_id;
+	@ManyToOne()
+	@MapsId("user_id")
+	@JoinColumn(name = "user_id")
+	private Users users;
+	
+	@ManyToOne()
+	@MapsId("role_id")
+	@JoinColumn(name = "role_id")
+	private Roles roles;
 
-	public long getRole_id() {
-		return role_id;
+	public Users getUsers() {
+		return users;
 	}
 
-	public void setRole_id(long role_id) {
-		this.role_id = role_id;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
-	public long getUser_id() {
-		return user_id;
+	public Roles getRoles() {
+		return roles;
 	}
 
-	public void setUser_id(long user_id) {
-		this.user_id = user_id;
+	public void setRoles(Roles roles) {
+		this.roles = roles;
 	}
 
-	
-	
-	
-//	@EmbeddedId
-//	private RoleUserId id;
-//
-//	public RoleUserId getId() {
-//		return id;
-//	}
-//
-//	public void setId(RoleUserId id) {
-//		this.id = id;
-//	}
+	public RoleUserId getId() {
+		return id;
+	}
+
+	public void setId(RoleUserId id) {
+		this.id = id;
+	}
 	
 	
 }

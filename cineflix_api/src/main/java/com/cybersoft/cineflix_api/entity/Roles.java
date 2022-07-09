@@ -1,10 +1,13 @@
 package com.cybersoft.cineflix_api.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name = "roles")
 public class Roles {
@@ -15,6 +18,17 @@ public class Roles {
 	
 	@Column(name = "role_name")
 	private String roleName;
+	
+	@OneToMany(mappedBy = "roles")
+	private Set<RoleUser> roleUsers;
+
+	public Set<RoleUser> getRoleUsers() {
+		return roleUsers;
+	}
+
+	public void setRoleUsers(Set<RoleUser> roleUsers) {
+		this.roleUsers = roleUsers;
+	}
 
 	public long getId() {
 		return id;
